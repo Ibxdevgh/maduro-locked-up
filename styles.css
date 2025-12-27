@@ -457,11 +457,54 @@ body {
 }
 
 .poses-hint {
-    margin-top: 12px;
-    font-size: 9px;
+    margin-top: 10px;
+    font-size: 8px;
     color: var(--dim);
     text-align: center;
     line-height: 1.5;
+}
+
+/* Coming Soon Section */
+.coming-soon {
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+}
+
+.coming-soon h3 {
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: var(--orange);
+    margin-bottom: 10px;
+    animation: glow 2s ease-in-out infinite;
+}
+
+@keyframes glow {
+    0%, 100% { text-shadow: 0 0 5px rgba(255, 107, 53, 0.5); }
+    50% { text-shadow: 0 0 15px rgba(255, 107, 53, 0.8); }
+}
+
+.coming-soon ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.coming-soon li {
+    font-size: 9px;
+    color: var(--dim);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    opacity: 0.7;
+    transition: all 0.2s;
+}
+
+.coming-soon li:hover {
+    opacity: 1;
+    color: var(--white);
+    transform: translateX(4px);
 }
 
 /* === SPEECH BUBBLE === */
