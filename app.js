@@ -879,6 +879,28 @@ function setupMetaverseModal() {
 }
 
 // ============ INIT ============
+// Copy CA to clipboard
+function setupCopyCA() {
+    const caElement = document.querySelector('.ca-address');
+    if (caElement) {
+        caElement.addEventListener('click', async () => {
+            const ca = '67Yv11swgsf9P73pwTwgrBEAsSnjSg3ocZ8KXWSspump';
+            try {
+                await navigator.clipboard.writeText(ca);
+                const original = caElement.textContent;
+                caElement.textContent = 'COPIED!';
+                caElement.style.color = '#00ff88';
+                setTimeout(() => {
+                    caElement.textContent = original;
+                    caElement.style.color = '';
+                }, 1500);
+            } catch (err) {
+                console.error('Failed to copy:', err);
+            }
+        });
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     init();
     setupChat();
@@ -887,4 +909,5 @@ document.addEventListener('DOMContentLoaded', () => {
     setupWalletButton();
     setupShare();
     setupMetaverseModal();
+    setupCopyCA();
 });

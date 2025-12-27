@@ -863,9 +863,16 @@ body {
     color: var(--dim);
 }
 
-.bottom-links .ca-coming {
+.bottom-links .ca-address {
     color: var(--green);
-    animation: pulse 2s infinite;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 10px;
+}
+
+.bottom-links .ca-address:hover {
+    color: var(--white);
+    text-shadow: 0 0 10px var(--green);
 }
 
 /* === LOADING === */
