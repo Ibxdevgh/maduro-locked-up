@@ -3,8 +3,7 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
 // ============ CONFIG ============
-// UPDATE THIS when you launch on pump.fun!
-const TOKEN_MINT = null; // e.g., "YourTokenMintAddressHere"
+const TOKEN_MINT = "9UGfpeJQbmSwDW2ScGDmz5zT8ctX1yTAYzy6KYmfpump";
 const TOKEN_DECIMALS = 6;
 
 // Pose files - add your GLBs here
