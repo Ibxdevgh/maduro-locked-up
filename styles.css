@@ -230,6 +230,37 @@ body {
     transform: scale(1.05);
 }
 
+/* === X (TWITTER) BUTTON === */
+.x-btn {
+    position: fixed;
+    bottom: 200px;
+    right: 24px;
+    width: 44px;
+    height: 44px;
+    background: var(--white);
+    border: 2px solid var(--white);
+    border-radius: 50%;
+    color: var(--black);
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+    z-index: 101;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.x-btn:hover {
+    background: var(--orange);
+    border-color: var(--orange);
+    color: var(--white);
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+}
+
 /* === LEFT PANEL - INMATE FILE === */
 .left-panel {
     position: fixed;
