@@ -3,102 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hood Toly</title>
-    <link rel="icon" type="image/jpeg" href="hoodtoly_logo.jpg">
+    <title>MADURO LOCKED UP</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Special+Elite&family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="app">
+        <!-- Prison Bars Overlay -->
+        <div class="prison-bars"></div>
+        
         <!-- Scanlines -->
         <div class="scanlines"></div>
+        
+        <!-- Flickering Light Effect -->
+        <div class="flicker-overlay"></div>
         
         <!-- Full Screen 3D Scene -->
         <canvas id="avatar-canvas"></canvas>
 
-        <!-- Top Bar -->
+        <!-- WANTED Poster Top -->
         <header class="top-bar">
-            <div class="logo">
-                <span class="logo-icon">◈</span>
-                <span class="logo-text">HOOD TOLY</span>
+            <div class="wanted-badge">
+                <span class="wanted-text">WANTED</span>
+                <span class="wanted-sub">INTERNATIONAL CRIMINAL</span>
             </div>
             <div class="status">
                 <span class="status-dot"></span>
-                <span>LIVE</span>
+                <span>DETAINED</span>
             </div>
-            
-            <!-- Wallet Connect Button -->
-            <button class="wallet-btn" id="wallet-btn">
-                <span class="wallet-icon">◈</span>
-                <span class="wallet-text">CONNECT</span>
-            </button>
         </header>
 
-        <!-- Left Panel - Combined Info & Poses -->
+        <!-- Inmate Info Panel -->
         <aside class="left-panel" id="left-panel">
-            <div class="poses-header">
-                <h3>POSES</h3>
-                <span class="token-balance" id="token-balance">0 $HOODTOLY</span>
+            <div class="inmate-photo">
+                <div class="photo-frame">
+                    <span class="inmate-number">№ 001-2025</span>
+                </div>
             </div>
-            <div class="poses-grid">
-                <button class="pose-btn active" data-pose="default" data-cost="0">
-                    <span class="pose-icon">🧍</span>
-                    <span class="pose-name">Default</span>
-                    <span class="pose-cost free">FREE</span>
-                </button>
-                <button class="pose-btn locked" data-pose="zesty" data-cost="50000">
-                    <span class="pose-icon">🔒</span>
-                    <span class="pose-name">ZESTY</span>
-                    <span class="pose-cost">50K</span>
-                </button>
-                <button class="pose-btn locked" data-pose="pump" data-cost="100000">
-                    <span class="pose-icon">🔒</span>
-                    <span class="pose-name">PUMP</span>
-                    <span class="pose-cost">100K</span>
-                </button>
-                <button class="pose-btn locked" data-pose="dancing" data-cost="250000">
-                    <span class="pose-icon">🔒</span>
-                    <span class="pose-name">J WALK</span>
-                    <span class="pose-cost">250K</span>
-                </button>
-                <button class="pose-btn locked" data-pose="boxing" data-cost="500000">
-                    <span class="pose-icon">🔒</span>
-                    <span class="pose-name">JAKE</span>
-                    <span class="pose-cost">500K</span>
-                </button>
-                <button class="pose-btn locked" data-pose="strong" data-cost="1000000">
-                    <span class="pose-icon">🔒</span>
-                    <span class="pose-name">ARNOLD</span>
-                    <span class="pose-cost">1M</span>
-                </button>
-                <button class="pose-btn locked" data-pose="backflip" data-cost="5000000">
-                    <span class="pose-icon">🔒</span>
-                    <span class="pose-name">SPEED</span>
-                    <span class="pose-cost">5M</span>
-                </button>
-                <button class="pose-btn locked forbidden" data-pose="naked" data-cost="50000000">
-                    <span class="pose-icon">🔒</span>
-                    <span class="pose-name">NAKED</span>
-                    <span class="pose-cost">50M</span>
-                </button>
+            <div class="inmate-info">
+                <h3>INMATE FILE</h3>
+                <div class="info-row">
+                    <span class="label">NAME:</span>
+                    <span class="value">NICOLÁS MADURO</span>
+                </div>
+                <div class="info-row">
+                    <span class="label">CHARGES:</span>
+                    <span class="value crimes">CRIMES AGAINST HUMANITY</span>
+                </div>
+                <div class="info-row">
+                    <span class="label">STATUS:</span>
+                    <span class="value status-locked">LOCKED UP</span>
+                </div>
+                <div class="info-row">
+                    <span class="label">SENTENCE:</span>
+                    <span class="value">LIFE + 999 YEARS</span>
+                </div>
             </div>
-            <p class="poses-hint">Hold $HOODTOLY to unlock poses</p>
-            
-            <!-- Coming Soon -->
-            <div class="coming-soon">
-                <button class="metaverse-btn" id="metaverse-btn">
-                    <span class="metaverse-icon">🌍</span>
-                    <span class="metaverse-text">TOLY METAVERSE</span>
-                    <span class="metaverse-tag">COMING SOON</span>
-                </button>
+            <div class="justice-served">
+                <span class="justice-icon">⚖️</span>
+                <span>JUSTICE SERVED</span>
             </div>
         </aside>
 
         <!-- Speech Bubble -->
         <div class="speech-bubble" id="speech-bubble">
-            <div class="bubble-content" id="toly-message">yo what's good fam, welcome to the sol gang</div>
+            <div class="bubble-content" id="toly-message">*sobbing* they finally caught me... no more arepas...</div>
             <div class="bubble-tail"></div>
         </div>
 
@@ -107,121 +78,24 @@
             <span>🔊</span>
         </button>
 
-        <!-- Share Button -->
-        <button class="share-btn" id="share-btn">
-            <span>📸 SHARE</span>
-        </button>
-
-        <!-- Metaverse Modal -->
-        <div class="metaverse-modal" id="metaverse-modal">
-            <div class="metaverse-modal-content">
-                <button class="modal-close" id="metaverse-close">✕</button>
-                <div class="metaverse-preview">
-                    <img src="toly_metaverse_wide.png" alt="Toly Metaverse Preview">
-                </div>
-                <div class="metaverse-header">
-                    <h2>TOLY METAVERSE</h2>
-                    <span class="coming-tag">COMING SOON</span>
-                </div>
-                <div class="metaverse-body">
-                    <p class="metaverse-intro">Enter the Hood Toly universe - a virtual world where $HOODTOLY holders become citizens.</p>
-                    
-                    <div class="metaverse-features">
-                        <div class="mv-feature">
-                            <span>🏠</span>
-                            <div>
-                                <h4>YOUR CRIB</h4>
-                                <p>Build and customize your virtual home. Flex your holdings with rare furniture and decorations.</p>
-                            </div>
-                        </div>
-                        <div class="mv-feature">
-                            <span>🎮</span>
-                            <div>
-                                <h4>MINI GAMES</h4>
-                                <p>Compete in arcade games to earn $HOODTOLY. Leaderboards, tournaments, and prizes.</p>
-                            </div>
-                        </div>
-                        <div class="mv-feature">
-                            <span>👥</span>
-                            <div>
-                                <h4>HANGOUT ZONES</h4>
-                                <p>Chill with other holders in virtual clubs, parks, and secret VIP areas for top holders.</p>
-                            </div>
-                        </div>
-                        <div class="mv-feature">
-                            <span>🛒</span>
-                            <div>
-                                <h4>MARKETPLACE</h4>
-                                <p>Trade exclusive skins, items, and virtual real estate using $HOODTOLY.</p>
-                            </div>
-                        </div>
-                        <div class="mv-feature">
-                            <span>🎭</span>
-                            <div>
-                                <h4>AVATAR UPGRADES</h4>
-                                <p>Unlock exclusive outfits, accessories, and animations for your Toly avatar.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="metaverse-cta">
-                        <p>Hold $HOODTOLY to secure your spot in the metaverse.</p>
-                        <a href="https://x.com/hoodtoly" target="_blank" class="follow-btn">FOLLOW FOR UPDATES</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Share Modal -->
-        <div class="share-modal" id="share-modal">
-            <div class="share-modal-content">
-                <button class="share-close" id="share-close">✕</button>
-                <h3>SHARE YOUR TOLY</h3>
-                
-                <!-- Background Selector -->
-                <div class="bg-selector">
-                    <button class="bg-option active" data-bg="gta">🌴 GTA</button>
-                    <button class="bg-option" data-bg="night">🌃 NIGHT</button>
-                    <button class="bg-option" data-bg="miami">🌊 MIAMI</button>
-                    <button class="bg-option" data-bg="gold">💰 GOLD</button>
-                </div>
-                
-                <div class="share-preview">
-                    <canvas id="share-canvas"></canvas>
-                </div>
-                <div class="share-actions">
-                    <button class="share-action-btn" id="share-twitter">
-                        <span>𝕏</span> COPY & POST
-                    </button>
-                    <button class="share-action-btn secondary" id="share-download">
-                        <span>↓</span> DOWNLOAD
-                    </button>
-                </div>
-            </div>
-        </div>
-
         <!-- Name Tag -->
         <div class="name-tag">
-            <div class="name">TOLY</div>
-            <div class="title">SOLANA FOUNDER</div>
+            <div class="name">MADURO</div>
+            <div class="title">FORMER DICTATOR • NOW PRISONER</div>
         </div>
 
         <!-- Bottom Input -->
         <div class="input-bar">
             <div class="input-wrapper">
                 <span class="input-prompt">></span>
-                <input type="text" id="chat-input" placeholder="say something to toly..." autocomplete="off" autofocus>
-                <button id="send-btn">SEND</button>
+                <input type="text" id="chat-input" placeholder="interrogate the prisoner..." autocomplete="off" autofocus>
+                <button id="send-btn">ASK</button>
             </div>
         </div>
 
         <!-- Bottom Links -->
         <footer class="bottom-links">
-            <a href="https://solana.com" target="_blank">SOLANA.COM</a>
-            <span>•</span>
-            <a href="https://x.com/hoodtoly" target="_blank">@HOODTOLY</a>
-            <span>•</span>
-            <span class="ca-address">CA: HdkeKMNUx6BFPz612eQJtrRL1J5YyPRpqMBdZi94pump</span>
+            <span class="freedom-text">🇻🇪 VENEZUELA LIBRE 🇻🇪</span>
         </footer>
 
         <!-- Background Music -->
