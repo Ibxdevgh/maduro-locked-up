@@ -19,10 +19,10 @@ let lightTime = 0;
 function init() {
     const canvas = document.getElementById('avatar-canvas');
 
-    // Scene - dark prison atmosphere
+    // Scene - prison atmosphere
     scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x0a0808);
-    scene.fog = new THREE.Fog(0x0a0808, 5, 15);
+    scene.background = new THREE.Color(0x1a1515);
+    scene.fog = new THREE.Fog(0x1a1515, 8, 20);
     
     // Camera - full screen
     camera = new THREE.PerspectiveCamera(
@@ -44,44 +44,49 @@ function init() {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.outputColorSpace = THREE.SRGBColorSpace;
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 0.8;
+    renderer.toneMappingExposure = 1.2;
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
     // === PRISON LIGHTING ===
     
-    // Dim ambient - prison is dark
-    const ambientLight = new THREE.AmbientLight(0x1a1210, 0.3);
+    // Brighter ambient for visibility
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
     scene.add(ambientLight);
 
-    // Main overhead harsh light (like a single bulb)
-    const mainLight = new THREE.SpotLight(0xfff5e0, 1.5, 10, Math.PI / 6, 0.5);
-    mainLight.position.set(0, 4, 2);
-    mainLight.target.position.set(0, 0, 0);
+    // Main overhead harsh light (like a prison spotlight)
+    const mainLight = new THREE.SpotLight(0xffffff, 3, 15, Math.PI / 4, 0.3);
+    mainLight.position.set(0, 5, 3);
+    mainLight.target.position.set(0, 1, 0);
     mainLight.castShadow = true;
     mainLight.shadow.mapSize.width = 1024;
     mainLight.shadow.mapSize.height = 1024;
     scene.add(mainLight);
     scene.add(mainLight.target);
 
+    // Front fill light - makes the character clearly visible
+    const frontLight = new THREE.DirectionalLight(0xffeedd, 1.5);
+    frontLight.position.set(0, 2, 5);
+    scene.add(frontLight);
+
     // Red police light (rotating)
-    redLight = new THREE.PointLight(0xff2020, 0, 8);
+    redLight = new THREE.PointLight(0xff2020, 0.3, 10);
     redLight.position.set(-3, 2, 2);
     scene.add(redLight);
 
     // Blue police light (rotating opposite)
-    blueLight = new THREE.PointLight(0x2040ff, 0, 8);
+    blueLight = new THREE.PointLight(0x2040ff, 0.3, 10);
     blueLight.position.set(3, 2, 2);
     scene.add(blueLight);
 
-    // Orange/rust accent from below (like from a fire or warning light)
-    const accentLight = new THREE.PointLight(0xff6b35, 0.4, 6);
-    accentLight.position.set(0, 0.2, 2);
+    // Orange/rust accent from below
+    const accentLight = new THREE.PointLight(0xff6b35, 0.8, 8);
+    accentLight.position.set(0, 0.5, 3);
     scene.add(accentLight);
 
-    // Back rim light
-    const rimLight = new THREE.PointLight(0x4a3020, 0.6, 8);
-    rimLight.position.set(0, 1.5, -3);
+    // Back rim light for depth
+    const rimLight = new THREE.PointLight(0xffffee, 1.0, 10);
+    rimLight.position.set(0, 2, -3);
     scene.add(rimLight);
 
     // === PRISON FLOOR ===
