@@ -49,7 +49,7 @@ function init() {
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
     // === PRISON LIGHTING ===
-    
+
     // Brighter ambient for visibility
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
     scene.add(ambientLight);
@@ -306,35 +306,73 @@ function setupChat() {
     });
 }
 
-// ============ AUDIO ============
+// ============ AUDIO - YouTube Player ============
+let ytPlayer = null;
+let audioEnabled = true;
+let playerReady = false;
+
+// YouTube API callback - must be global
+window.onYouTubeIframeAPIReady = function() {
+    ytPlayer = new YT.Player('youtube-player', {
+        height: '1',
+        width: '1',
+        videoId: 'VH_AjyFeF6k', // YOVNGCHIMI - MEGVTRON
+        playerVars: {
+            autoplay: 0,
+            loop: 1,
+            playlist: 'VH_AjyFeF6k', // Required for looping
+            controls: 0,
+            disablekb: 1,
+            fs: 0,
+            modestbranding: 1,
+            rel: 0
+        },
+        events: {
+            onReady: onPlayerReady,
+            onStateChange: onPlayerStateChange
+        }
+    });
+};
+
+function onPlayerReady(event) {
+    playerReady = true;
+    event.target.setVolume(30); // 30% volume
+    console.log('YouTube player ready - MEGVTRON loaded');
+}
+
+function onPlayerStateChange(event) {
+    // Loop the video when it ends
+    if (event.data === YT.PlayerState.ENDED) {
+        ytPlayer.playVideo();
+    }
+}
+
 function setupAudio() {
     const audioBtn = document.getElementById('audio-toggle');
-    const music = document.getElementById('bg-music');
-    let audioEnabled = true;
-    
-    music.volume = 0.2;
     
     const startMusic = () => {
-        if (audioEnabled) {
-            music.play().catch(() => {});
+        if (audioEnabled && playerReady && ytPlayer) {
+            ytPlayer.playVideo();
         }
         document.removeEventListener('click', startMusic);
         document.removeEventListener('keypress', startMusic);
     };
     
-    music.play().catch(() => {
+    // Wait for user interaction to start (browser autoplay policy)
         document.addEventListener('click', startMusic);
         document.addEventListener('keypress', startMusic);
-    });
     
     audioBtn.addEventListener('click', (e) => {
         e.stopPropagation();
         audioEnabled = !audioEnabled;
         audioBtn.querySelector('span').textContent = audioEnabled ? '🔊' : '🔇';
-        if (audioEnabled) {
-            music.play();
-        } else {
-            music.pause();
+        
+        if (ytPlayer && playerReady) {
+            if (audioEnabled) {
+                ytPlayer.playVideo();
+            } else {
+                ytPlayer.pauseVideo();
+            }
         }
     });
 }

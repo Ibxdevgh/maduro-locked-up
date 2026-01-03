@@ -98,12 +98,15 @@
             <span class="freedom-text">🇻🇪 VENEZUELA LIBRE 🇻🇪</span>
         </footer>
 
-        <!-- Background Music -->
-        <audio id="bg-music" loop>
-            <source src="icecube.m4a" type="audio/mp4">
-        </audio>
+        <!-- Background Music - YouTube Embed (hidden) -->
+        <div id="youtube-player-container" style="position:fixed;top:-9999px;left:-9999px;">
+            <div id="youtube-player"></div>
+        </div>
     </div>
 
+    <!-- YouTube IFrame API -->
+    <script src="https://www.youtube.com/iframe_api"></script>
+    
     <script type="importmap">
     {
         "imports": {
